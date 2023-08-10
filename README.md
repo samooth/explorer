@@ -5,7 +5,66 @@
 ## Documentation
 
 
+This library helps manage the following APIs:
 
+[Taal](https://docs.taal.com/core-products/whatsonchain)
+
+[Bitails](https://docs.bitails.io/)
+
+
+#### Methods
+
+  status()
+
+  chainInfo()
+
+  blockHash()
+
+  blockHeight()
+
+  blockList ( height, limit )
+
+  blockLatest ( hash )
+
+  blockTransactions ( hash )
+
+  txHash ( hash )
+
+  downloadTx ( hash )
+  
+  downloadTxOut ( hash, index )
+
+  broadcast( txhex )
+
+  broadcastBinary ( txBuf)
+
+  getOutputData ( hash, outputIndex )
+
+  getOutputsData ( hash, fromIndex, toIndex ) 
+
+  merkleProof ( hash )
+
+  mempoolInfo ()
+
+  mempoolTxs ()
+
+  addressInfo ( address )
+
+  balance ( address )
+
+  history ( address )
+
+  utxos ( address )
+
+  detailScriptHash ( scriptHash )
+
+  balanceScriptHash ( scriptHash )
+
+  historyByScriptHash ( scriptHash )
+
+  utxosByScriptHash ( scriptHash )
+
+  search ( text )
 
 ## Install
 
@@ -17,7 +76,26 @@ npm install git+https://github.com/samooth/explorer
 
 ## Sample Usage
 
+```javascript
+const Explorer = require('../src/index.js')
 
+let woc = new Explorer("main", { api: "woc" });
+woc.status().then((status) => console.log("woc status:", status))
+
+woc.blockLatest(10)
+.then((blk)=>console.log("woc latest:",blk))
+
+woc.blockList("000000000000000005bf29a3bff05d1cbf120d052bdbea6d6b8643eefd44be83")
+.then((blk)=>console.log("woc blk list:",blk))
+
+
+let bitails = new Explorer("main", { api: "bitails" });
+woc.status().then((status) => console.log("woc status:", status))
+
+
+
+
+```
 
 ## History
 
