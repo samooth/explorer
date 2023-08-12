@@ -1,70 +1,92 @@
 # Explorer JS Wrapper library for Bitcoin SV
 
+## Usage
 
+```
+const Explorer = require("@samooth/explorer")
 
-## Documentation
+const explorer = new Explorer("main")
 
+```
 
-This library helps manage the following APIs:
+or
 
-[Taal](https://docs.taal.com/core-products/whatsonchain)
+```
+import Explorer from "@samooth/explorer"
 
-[Bitails](https://docs.bitails.io/)
+const explorer = new Explorer("main")
 
+```
+
+#### Endpoints
+
+Currently there are 4 endpoints ( whatsonchain, bitails, electrumx, bsvdirect ) but extra endpoints can be added.
+
+```javascript
+let explorer = new Explorer("main")
+
+explorer.endpoints.push( myAPI: {
+        main: "https://my.api.tld/",
+        test: "https://my.api.tld/",
+        headerKey: 'my-api-key'
+    })
+
+explorer.api='myAPI'
+```
 
 #### Methods
 
-  status()
+  - status()
 
-  chainInfo()
+  - chainInfo()
 
-  blockHash()
+  - blockHash()
 
-  blockHeight()
+  - blockHeight()
 
-  blockList ( height, limit )
+  - blockList ( height, limit )
 
-  blockLatest ( hash )
+  - blockLatest ( hash )
 
-  blockTransactions ( hash )
+  - blockTransactions ( hash )
 
-  txHash ( hash )
+  - txHash ( hash )
 
-  downloadTx ( hash )
+  - downloadTx ( hash )
   
-  downloadTxOut ( hash, index )
+  - downloadTxOut ( hash, index )
 
-  broadcast( txhex )
+  - broadcast( txhex )
 
-  broadcastBinary ( txBuf)
+  - broadcastBinary ( txBuf)
 
-  getOutputData ( hash, outputIndex )
+  - getOutputData ( hash, outputIndex )
 
-  getOutputsData ( hash, fromIndex, toIndex ) 
+  - getOutputsData ( hash, fromIndex, toIndex ) 
 
-  merkleProof ( hash )
+  - merkleProof ( hash )
 
-  mempoolInfo ()
+  - mempoolInfo ()
 
-  mempoolTxs ()
+  - mempoolTxs ()
 
-  addressInfo ( address )
+  - addressInfo ( address )
 
-  balance ( address )
+  - balance ( address )
 
-  history ( address )
+  - history ( address )
 
-  utxos ( address )
+  - utxos ( address )
 
-  detailScriptHash ( scriptHash )
+  - detailScriptHash ( scriptHash )
 
-  balanceScriptHash ( scriptHash )
+  - balanceScriptHash ( scriptHash )
 
-  historyByScriptHash ( scriptHash )
+  - historyByScriptHash ( scriptHash )
 
-  utxosByScriptHash ( scriptHash )
+  - utxosByScriptHash ( scriptHash )
 
-  search ( text )
+  - search ( text )
 
 ## Install
 
@@ -90,14 +112,31 @@ woc.blockList("000000000000000005bf29a3bff05d1cbf120d052bdbea6d6b8643eefd44be83"
 
 
 let bitails = new Explorer("main", { api: "bitails" });
-woc.status().then((status) => console.log("woc status:", status))
+bitails.status().then((status) => console.log("bitails status:", status))
 
 
 
 
 ```
 
+
+## Documentation
+
+
+This library helps manage the following APIs:
+
+[Taal](https://docs.taal.com/core-products/whatsonchain)
+
+[Bitails](https://docs.bitails.io/)
+
+
 ## History
+
+### 0.3.0
+ - Upgrade to bsv2
+ - Support for multiple endpoints
+ - Support for binary broadcast
+
 
 ### 0.2.0
 - Support Cache, default is true. if you don't want cache, set option `{ enableCache: false }`
