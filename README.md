@@ -93,7 +93,7 @@ explorer.api='myAPI'
 ---
 
 ```javascript
-npm install git+https://github.com/samooth/explorer
+npm install @samooth/explorer
 ```
 
 ## Sample Usage
