@@ -99,7 +99,7 @@ npm install git+https://github.com/samooth/explorer
 ## Sample Usage
 
 ```javascript
-const Explorer = require('../src/index.js')
+const Explorer = require('@samooth/explorer')
 
 let woc = new Explorer("main", { api: "woc" });
 woc.status().then((status) => console.log("woc status:", status))
@@ -143,11 +143,11 @@ This library helps manage the following APIs:
 - Support ApiKey and rate limit to 3 requests/sec without apiKey.
 ```
   // with apiKey
-  const explorer = new Bitails( 'testnet', { apiKey: 'your api key'}  )
+  const explorer = new Explorer( 'testnet', { apiKey: 'your api key'}  )
 ```
 ```
   // without apiKey
-  const explorer = new Bitails( 'testnet' )
+  const explorer = new Explorer( 'testnet' )
 ```
 - Support JSDoc type check.
 
